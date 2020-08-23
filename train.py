@@ -183,12 +183,3 @@ if __name__ == '__main__':
         torch.save(cross_encoder_single.linear.state_dict(), os.path.join(out_dir, 'linear'))
 
         f1.append(eval.get_f1())
-
-
-    user = 'gpus.experiment@gmail.com'
-    pwd = 'biuNLP24'
-    recipient = 'arie.cattan@gmail.com'
-    subject = 'Training is done ({} - {})'.format(config.mention_type, config.training_method)
-    message = 'F1: {} \n\n'.format(f1) + pyhocon.HOCONConverter.convert(config, "hocon")
-
-    send_email(user, pwd, recipient, subject, message)
